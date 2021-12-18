@@ -2,10 +2,12 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 )
 
 func main() {
+	inputFile := "input.txt"
 	eventLoop := new(EventLoop)
 	eventLoop.Start()
 
@@ -15,9 +17,13 @@ func main() {
 
 		for scanner.Scan() {
 			commandLine := scanner.Text()
-			cmd := parse(commandLine) // parse the line to get a Command
+			cmd := Parse(commandLine) // parse the line to get a Command
 			eventLoop.Post(cmd)
 		}
+	} else {
+		eventLoop.Post(&PrintCommand{
+			arg: fmt.Sprintf("Error opening file \"%s\"", err.Error()),
+		})
 	}
 	eventLoop.AwaitFinish()
 }
