@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	. "github.com/asdf2107/architecture-lab-4/src/commands"
 )
 
 func main() {
