@@ -1,4 +1,8 @@
-package main
+package utils
+
+import (
+	. "github.com/asdf2107/architecture-lab-4/src/interfaces"
+)
 
 type EventLoop struct {
 	queue   *Queue

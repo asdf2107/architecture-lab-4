@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	. "github.com/asdf2107/architecture-lab-4/src/commands"
+	. "github.com/asdf2107/architecture-lab-4/src/utils"
 )
 
 func main() {
@@ -22,7 +24,7 @@ func main() {
 		}
 	} else {
 		eventLoop.Post(&PrintCommand{
-			arg: fmt.Sprintf("Error opening file \"%s\"", err.Error()),
+			Arg: fmt.Sprintf("Error opening file \"%s\"", err.Error()),
 		})
 	}
 	eventLoop.AwaitFinish()
