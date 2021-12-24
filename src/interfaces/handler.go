@@ -1,4 +1,4 @@
-package main
+package interfaces
 
 // Handler allows to send commands to an event loop
 // it’s associated with.
