@@ -1,7 +1,8 @@
-package main
+package utils
 
 import (
 	"sync"
+	. "github.com/asdf2107/architecture-lab-4/src/interfaces"
 )
 
 type Queue struct {
