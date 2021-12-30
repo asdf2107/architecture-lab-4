@@ -1,10 +1,13 @@
 package implementation
 
 import (
+	"sync"
+
 	. "github.com/asdf2107/architecture-lab-4/src/interfaces"
 )
 
 type EventLoop struct {
+	sync.Mutex
 	queue   *Queue
 	stopped bool
 	busy    bool
@@ -12,6 +15,8 @@ type EventLoop struct {
 }
 
 func (eventLoop *EventLoop) Post(cmd Command) {
+	eventLoop.Lock()
+	defer eventLoop.Unlock()
 	eventLoop.queue.enqueue(cmd)
 	if eventLoop.busy && !eventLoop.stopped {
 		eventLoop.startRoutine()
@@ -29,6 +34,8 @@ func (eventLoop *EventLoop) startRoutine() {
 				eventLoop.quit <- true
 				return
 			} else {
+				eventLoop.Lock()
+				defer eventLoop.Unlock()
 				eventLoop.busy = true
 				return
 			}
