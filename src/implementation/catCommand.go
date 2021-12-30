@@ -1,7 +1,8 @@
-package commands
+package implementation
 
 import (
 	"fmt"
+
 	"github.com/asdf2107/architecture-lab-4/src/interfaces"
 )
 

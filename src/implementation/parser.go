@@ -1,10 +1,10 @@
-package utils
+package implementation
 
 import (
 	"fmt"
 	"strings"
+
 	. "github.com/asdf2107/architecture-lab-4/src/interfaces"
-	. "github.com/asdf2107/architecture-lab-4/src/commands"
 )
 
 func Parse(textCommand string) Command {
@@ -15,7 +15,7 @@ func Parse(textCommand string) Command {
 		} else {
 			command := PrintCommand{
 				Arg: split[1],
-			} 
+			}
 			return &command
 		}
 	} else if split[0] == "cat" {
