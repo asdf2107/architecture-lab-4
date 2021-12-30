@@ -27,5 +27,7 @@ func (q *Queue) dequeue() Command {
 }
 
 func (q *Queue) length() int {
+	q.Lock()
+	defer q.Unlock()
 	return len(q.commands)
 }
